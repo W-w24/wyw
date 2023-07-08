@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>您认为我们要寻找的宝物是什么：</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    .input-container {
+        position: absolute;
+        top: 50%;/* 设置元素的顶部在父元素中心 */
+        left: 50%;
+        transform: translate(-50%, -50%);/* 设置2D转换，将元素向上和向左移动50% */
+        width: 600px;
+        height: 360px;
+        background-image: url('result.png');
+        background-size: cover;/* 设置背景大小为覆盖 */
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    .input-container input[type="text"] {
+        float: left;
+        height: 40px;
+        padding: 10px;
+        font-size: 20px;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        outline: none;
+        box-sizing: border-box;
+        position: relative;
+        top: 80px;
+        margin-left: 40px;
+    }
+    .input-container label {
+        position: absolute;
+        left: 10px;
+        top: -18px;
+        background-color: #fff;
+        padding: 0 5px;
+        font-size: 18px;
+        color: #555;
+    }
+    .input-container input[type="text"]:focus+label,
+    .input-container input[type="text"]:not(:placeholder-shown)+label {
+        top: -30px;
+        font-size: 14px;
+        color: #999;
+        transition: all 0.3s ease-in-out;
+    }
+    .input-container button {
+        float: left;
+    }
+    #submit {
+        position: relative;
+        left: 20px;
+        top: 80px;
+    }
+</style>
+<body>
+    <div class="input-container">
+        <input type="text" id="answer-input" placeholder=" " />
+        <label for="answer-input">您认为我们要寻找的宝物是什么：</label>
+        <button id="submit" class="btn" onclick="checkAnswer()">提交</button>
+    </div>
+</body>
+<script>
+    function checkAnswer() {
+        var answerInput = document.getElementById("answer-input");// 获取id为answer-input的元素，赋值给变量answerInput
+        var answer = answerInput.value.trim().toLowerCase(); // 获取answerInput的值，去除前后空格并转换为小写，赋值给变量answer
+        var correctAnswer = "蝴蝶"; // 定义一个变量correctAnswer，值为"蝴蝶"
+        if (answer === correctAnswer) {
+            window.location.href = "success.html";// 答案正确，跳转到成功页面
+        } else {
+            alert("答案错误，请重新寻找线索后输入！");
+            //answerInput.value = ""; // 答案错误，清空输入框，重新输入并提示弹窗
+            window.location.href = "map.html";
+        }
+    }
+</script>
+</html>
